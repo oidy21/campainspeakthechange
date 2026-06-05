@@ -442,6 +442,15 @@
       color: #1A6B33;
     }
 
+    .dict-src {
+      margin-top: 10px;
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(26,26,26,0.4);
+      line-height: 1.5;
+      text-align: right;
+    }
+
     /* ── SECTION 3: 퀴즈 ── */
     #quiz {
       background: linear-gradient(135deg, var(--secondary-light) 0%, #f0f8ff 100%);
@@ -1069,15 +1078,22 @@
 
 <script>
   /* ── 사전 데이터 ── */
+  const SRC_LAW    = '법제처. (2026). 알기 쉬운 법령 정비기준 (제10판 수정증보판). 법제처.';
+  const SRC_FIRST  = '장애인먼저실천운동본부. (2018). 장애 관련 올바른 용어 가이드라인. 모니터 보고서. 장애인먼저실천운동본부.';
+  const SRC_NHRC   = '국가인권위원회. (2014). 언론매체의 장애비하표현에 대한 의견표명. 국가인권위원회.';
+  const SRC_YTN    = '신지영. (2021, 8월 9일). 반팔티 입으셨어요? 알고 나면 불편한 차별 표현 [인터뷰]. YTN.';
+
   const dictWords = [
-    { bad: '결정장애',   good: '선택이 너무 어려워' },
-    { bad: '벙어리',     good: '말이 안 나와' },
-    { bad: '찐따',       good: '눈치 없는 사람' },
-    { bad: '멘탈 나갔어', good: '너무 힘들어' },
-    { bad: '미치겠어',   good: '한계야' },
-    { bad: '정신 나갔나봐', good: '집중이 안 돼' },
-    { bad: '벙어리장갑', good: '손모아장갑' },
-    { bad: '반팔',       good: '반소매' },
+    { bad: '정신병자',      good: '정신질환자',      src: SRC_LAW   },
+    { bad: '정상인',        good: '비장애인',         src: SRC_FIRST },
+    { bad: '장애를 앓다',   good: '장애를 갖다',      src: SRC_FIRST },
+    { bad: '꿀 먹은 벙어리', good: '말문이 막힌',     src: SRC_FIRST },
+    { bad: '외눈박이 방송', good: '편파 방송',         src: SRC_FIRST },
+    { bad: '벙어리장갑',    good: '손모아장갑',        src: SRC_FIRST },
+    { bad: '또라이',        good: '지적장애인',        src: SRC_NHRC  },
+    { bad: '난쟁이',        good: '지체장애인',        src: SRC_NHRC  },
+    { bad: '반팔',          good: '반소매',            src: SRC_YTN   },
+    { bad: '외발자전거',    good: '외바퀴자전거',      src: SRC_YTN   },
   ];
 
   /* ── 사전 카드 렌더링 ── */
@@ -1095,6 +1111,7 @@
         <div class="dict-card-bottom">
           <div class="dict-alt">대체표현</div>
           <div class="dict-replace">${w.good}</div>
+          <div class="dict-src">출처: ${w.src}</div>
         </div>
       </div>`;
   });
